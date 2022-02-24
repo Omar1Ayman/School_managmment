@@ -80,6 +80,10 @@ Route::group(
             Route::resource('Attendence', 'AttendanceController');
 
         });
+    //==============================Exams============================
+    Route::group(['namespace' => 'Exams'], function () {
+        Route::resource('Exams', 'ExamController');
+    });
 
     //==============================subjects============================
         Route::group(['namespace' => 'Subjects'], function () {
