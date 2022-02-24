@@ -127,9 +127,9 @@ class GradeController extends Controller
         return $list_teacher;
     }
 
-    public function Get_teacherSpec($id)
+    public function Get_teacherSpec($id , $grade_id)
     {
-        $list_teacher = Teacher::where("spec_id" ,$id)->pluck("name",'id');
+        $list_teacher = Teacher::where("spec_id" ,$id)->where('grade_id' , $grade_id)->pluck("name",'id');
         return $list_teacher;
     }
 

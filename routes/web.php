@@ -39,7 +39,7 @@ Route::group(
                 Route::resource('classes', "RawRoomController");
                 Route::post('class', "RawRoomController@class")->name('class');
                 Route::get('/Get_teacher/{id}', 'GradeController@Get_teacher');
-                Route::get('/Get_teacherSpec/{id}', 'GradeController@Get_teacherSpec');
+                Route::get('/Get_teacherSpec/{id}/{grade_id}', 'GradeController@Get_teacherSpec');
         });
 
         Route::group(["namespace" => "Section"] , function(){

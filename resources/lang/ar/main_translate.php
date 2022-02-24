@@ -68,7 +68,8 @@ return [
     'list_calender' => 'قائمة التقويم ',
     'the_amount ' => 'المبلغ',
     'Statement' => 'البيان ',
-    'Catch_Receipts'  =>'سندات القبض'
+    'Catch_Receipts'  =>'سندات القبض',
+    'Exams' => 'الامتحانات',
 
 
 

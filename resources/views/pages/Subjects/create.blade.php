@@ -144,9 +144,10 @@
          $(document).ready(function(){
             $('select[name="spec_id"]').on('change' , function(){
                 var spec_id = $(this).val();
+                var grade_id = $('select[name="Grade_id"]').val();
                 if(spec_id){
                     $.ajax({
-                        url : "{{ URL::to('Get_teacherSpec') }}/" + spec_id,
+                        url : "{{ URL::to('Get_teacherSpec') }}/" + spec_id + '/' + grade_id,
                         type : "GET",
                         dataType : "json",
                         success : function(data){

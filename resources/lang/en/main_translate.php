@@ -75,7 +75,8 @@ return [
     'list_calender' => 'List Calender',
     'the_amount ' => 'the amount',
      'Statement' => 'Statement',
-    'Catch_Receipts'  =>'Catch Receipts'
+    'Catch_Receipts'  =>'Catch Receipts',
+    'Exams'  => "Exams"
 
 
 

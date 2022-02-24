@@ -28,7 +28,6 @@ class SubjectRepository implements SubjectRepositoryInterface{
 
       public function store($request)
     {
-        return $request;
         try {
             $subjects = new Subject();
             $subjects->name = ['en' => $request->Name_en, 'ar' => $request->Name_ar];
