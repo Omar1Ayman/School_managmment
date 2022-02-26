@@ -51,39 +51,11 @@
 
                                     <div class="col">
                                         <div class="form-group">
-                                            <label for="Grade_id">المادة الدراسية : <span class="text-danger">*</span></label>
-                                            <select class="custom-select mr-sm-2" name="subject_id">
-                                                <option selected disabled>حدد المادة الدراسية...</option>
-                                                @foreach($subjects as $subject)
-                                                    <option  value="{{ $subject->id }}">{{ $subject->name }}</option>
-                                                @endforeach
-                                            </select>
-                                        </div>
-                                    </div>
-
-                                    <div class="col">
-                                        <div class="form-group">
-                                            <label for="Grade_id">اسم المعلم : <span class="text-danger">*</span></label>
-                                            <select class="custom-select mr-sm-2" name="teacher_id">
-                                                <option selected disabled>حدد اسم المعلم...</option>
-                                                @foreach($teachers as $teacher)
-                                                    <option  value="{{ $teacher->id }}">{{ $teacher->Name }}</option>
-                                                @endforeach
-                                            </select>
-                                        </div>
-                                    </div>
-
-                                </div>
-
-                                <div class="form-row">
-
-                                    <div class="col">
-                                        <div class="form-group">
                                             <label for="Grade_id">{{trans('Students_trans.Grade')}} : <span class="text-danger">*</span></label>
                                             <select class="custom-select mr-sm-2" name="Grade_id">
                                                 <option selected disabled>{{trans('Parent_trans.Choose')}}...</option>
                                                 @foreach($grades as $grade)
-                                                    <option  value="{{ $grade->id }}">{{ $grade->Name }}</option>
+                                                    <option  value="{{ $grade->id }}">{{ $grade->name }}</option>
                                                 @endforeach
                                             </select>
                                         </div>
@@ -108,6 +80,37 @@
                                     </div>
 
                                 </div>
+
+
+                                <div class="form-row">
+
+                                    <div class="col">
+                                        <div class="form-group">
+                                            <label for="Grade_id">المادة الدراسية : <span class="text-danger">*</span></label>
+                                            <select class="custom-select mr-sm-2" name="subject_id">
+                                                <option selected disabled>حدد المادة الدراسية...</option>
+                                                @foreach($subjects as $subject)
+                                                    <option  value="{{ $subject->id }}">{{ $subject->name }}</option>
+                                                @endforeach
+                                            </select>
+                                        </div>
+                                    </div>
+
+                                    <div class="col">
+                                        <div class="form-group">
+                                            <label for="Grade_id">اسم المعلم : <span class="text-danger">*</span></label>
+                                            <select class="custom-select mr-sm-2" name="teacher_id">
+                                                <option selected disabled>حدد اسم المعلم...</option>
+                                                @foreach($teachers as $teacher)
+                                                    <option  value="{{ $teacher->id }}">{{ $teacher->name }}</option>
+                                                @endforeach
+                                            </select>
+                                        </div>
+                                    </div>
+
+                                </div>
+
+
                                 <button class="btn btn-success btn-sm nextBtn btn-lg pull-right" type="submit">حفظ البيانات</button>
                             </form>
                         </div>
@@ -121,23 +124,47 @@
 @section('js')
     @toastr_js
     @toastr_render
-    <script>
-        $(document).ready(function () {
-            $('select[name="Grade_id"]').on('change', function () {
+   <script>
+        $(document).ready(function(){
+            $('select[name="Grade_id"]').on('change' , function(){
                 var Grade_id = $(this).val();
-                if (Grade_id) {
+                if(Grade_id){
                     $.ajax({
-                        url: "{{ URL::to('classes') }}/" + Grade_id,
-                        type: "GET",
-                        dataType: "json",
-                        success: function (data) {
-                            $('select[name="Class_id"]').empty();
+                        url : "{{ URL::to('Get_teacher') }}/" + Grade_id ,
+                        type : "GET",
+                        dataType : "json",
+                        success : function(data){
+                            $('select[name="teacher_id"]').empty();
+                            $('select[name="teacher_id"]').append('<option selected disabled >{{trans('Parent_trans.Choose')}}...</option>');
                             $.each(data, function (key, value) {
-                                $('select[name="Class_id"]').append('<option value="' + key + '">' + value + '</option>');
+                                $('select[name="teacher_id"]').append('<option value="' + key + '">' + value + '</option>');
                             });
                         },
                     });
-                } else {
+                }else {
+                    console.log('AJAX load did not work');
+                }
+            });
+        });
+
+         $(document).ready(function(){
+            $('select[name="subject_id"]').on('change' , function(){
+                var spec_id = $(this).val();
+                var grade_id = $('select[name="Grade_id"]').val();
+                if(spec_id){
+                    $.ajax({
+                        url : "{{ URL::to('Get_teacherSpec') }}/" + spec_id + '/' + grade_id,
+                        type : "GET",
+                        dataType : "json",
+                        success : function(data){
+                            $('select[name="teacher_id"]').empty();
+                            $('select[name="teacher_id"]').append('<option selected disabled >{{trans('Parent_trans.Choose')}}...</option>');
+                            $.each(data, function (key, value) {
+                                $('select[name="teacher_id"]').append('<option value="' + key + '">' + value + '</option>');
+                            });
+                        },
+                    });
+                }else {
                     console.log('AJAX load did not work');
                 }
             });

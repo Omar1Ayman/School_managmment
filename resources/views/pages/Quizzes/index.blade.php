@@ -43,10 +43,10 @@
                                             <tr>
                                                 <td>{{ $loop->iteration}}</td>
                                                 <td>{{$quizze->name}}</td>
-                                                <td>{{$quizze->teacher->Name}}</td>
-                                                <td>{{$quizze->grade->Name}}</td>
-                                                <td>{{$quizze->classroom->Name_Class}}</td>
-                                                <td>{{$quizze->section->Name_Section}}</td>
+                                                <td>{{$quizze->teacher->name}}</td>
+                                                <td>{{$quizze->grade->name}}</td>
+                                                <td>{{$quizze->classroom->name}}</td>
+                                                <td>{{$quizze->section->name}}</td>
                                                 <td>
                                                     <a href="{{route('Quizzes.edit',$quizze->id)}}"
                                                        class="btn btn-info btn-sm" role="button" aria-pressed="true"><i
