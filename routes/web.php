@@ -79,6 +79,10 @@ Route::group(
 
             Route::resource('Attendence', 'AttendanceController');
 
+            Route::get('/indirect', 'OnlineClasseController@indirectCreate')->name('indirect.create');
+            Route::post('/indirect', 'OnlineClasseController@storeIndirect')->name('indirect.store');
+            Route::resource('online_classes', 'OnlineClasseController');
+
         });
     //==============================Exams============================
     Route::group(['namespace' => 'Exams'], function () {
