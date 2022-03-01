@@ -104,6 +104,12 @@ Route::group(
             Route::resource('questions', 'QuestionController');
         });
 
+    //==============================Library============================
+        Route::group(['namespace' => 'Library'], function () {
+            Route::resource('library', 'LibraryController');
+            Route::get('download_file/{filename}', 'LibraryController@downloadAttachment')->name('downloadAttachment');
+        });
+
 
         Route::view('add-parent', 'livewire.add-form');
         Route::view("add-teacher" , "livewire.add-teacher-form");
