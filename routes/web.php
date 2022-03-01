@@ -79,6 +79,10 @@ Route::group(
 
             Route::resource('Attendence', 'AttendanceController');
 
+            Route::get('/indirect', 'OnlineClasseController@indirectCreate')->name('indirect.create');
+            Route::post('/indirect', 'OnlineClasseController@storeIndirect')->name('indirect.store');
+            Route::resource('online_classes', 'OnlineClasseController');
+
         });
     //==============================Exams============================
     Route::group(['namespace' => 'Exams'], function () {
@@ -98,6 +102,12 @@ Route::group(
     //==============================questions============================
         Route::group(['namespace' => 'questions'], function () {
             Route::resource('questions', 'QuestionController');
+        });
+
+    //==============================Library============================
+        Route::group(['namespace' => 'Library'], function () {
+            Route::resource('library', 'LibraryController');
+            Route::get('download_file/{filename}', 'LibraryController@downloadAttachment')->name('downloadAttachment');
         });
 
 

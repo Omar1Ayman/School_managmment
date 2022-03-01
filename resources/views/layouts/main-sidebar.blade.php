@@ -210,14 +210,11 @@
                             <div class="clearfix"></div>
                         </a>
                         <ul id="library-icon" class="collapse" data-parent="#sidebarnav">
-                            <li> <a href="fontawesome-icon.html">font Awesome</a> </li>
-                            <li> <a href="themify-icons.html">Themify icons</a> </li>
-                            <li> <a href="weather-icon.html">Weather icons</a> </li>
+                            <li> <a href="{{route('library.index')}}">قائمة الكتب</a> </li>
                         </ul>
                     </li>
 
-
-                    <!-- Onlinec lasses-->
+                     <!-- Online classes-->
                     <li>
                         <a href="javascript:void(0);" data-toggle="collapse" data-target="#Onlineclasses-icon">
                             <div class="pull-left"><i class="fas fa-video"></i><span class="right-nav-text">{{trans('main_translate.Onlineclasses')}}</span></div>
@@ -225,12 +222,9 @@
                             <div class="clearfix"></div>
                         </a>
                         <ul id="Onlineclasses-icon" class="collapse" data-parent="#sidebarnav">
-                            <li> <a href="fontawesome-icon.html">font Awesome</a> </li>
-                            <li> <a href="themify-icons.html">Themify icons</a> </li>
-                            <li> <a href="weather-icon.html">Weather icons</a> </li>
+                            <li> <a href="{{route('online_classes.index')}}">حصص اونلاين مع زوم</a> </li>
                         </ul>
                     </li>
-
 
                     <!-- Settings-->
                     <li>
