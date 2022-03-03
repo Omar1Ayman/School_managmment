@@ -110,6 +110,12 @@ Route::group(
             Route::get('download_file/{filename}', 'LibraryController@downloadAttachment')->name('downloadAttachment');
         });
 
+         //==============================Setting============================
+
+         Route::group(['namespace' => 'Setting'], function () {
+            Route::resource('settings', 'SettingController');
+        });
+
 
         Route::view('add-parent', 'livewire.add-form');
         Route::view("add-teacher" , "livewire.add-teacher-form");
